@@ -169,7 +169,7 @@
   </div>
 
   <footer class="foot">
-    <strong>59 processes</strong><span>·</span><strong>6 layers</strong><span>·</span>
+    <strong>60 processes</strong><span>·</span><strong>6 layers</strong><span>·</span>
     <span>Tracking: <b>Tracked</b> = Q3 rock / named system · <b>New</b> = surfaced in transcripts · <b>Gap</b> = no owner</span>
   </footer>
 </div>
@@ -239,6 +239,7 @@ const D=[
  ["Finance","Jack","Gap","Legal / compliance / contracts / NDAs","Contracts, NDAs and third-party liability (e.g. Vercel outages). Owner not firmly seated."],
  ["Finance","Unassigned","Gap","Billing ops / payouts / revenue-share","Day-to-day billing, VA payouts and revenue-share accounting — not yet instrumented anywhere."],
  ["Client Success","Kas","Tracked","Client Dashboard","Filtered client view: onboarding, knowledge library, reporting & system health, and admin/contracts."],
+ ["Client Success","Daniel (Ops)","New","Client communication & updates","Proactive client status updates and progress reports on a set cadence — keeping every client informed of what shipped and what's next."],
  ["Client Success","Daniel (Ops)","New","Client comms & change-request intake","All client messages and change requests captured as PRDs in Plane — one source of truth, ending memory disputes."],
  ["Client Success","Unassigned","Gap","Approval-capture SOP / change log","SOP to capture client approvals and change logs; introduced but no named owner."],
  ["Client Success","Daniel (Ops)","Tracked","NPS surveys","Automated NPS survey emails within the email template library."],
@@ -253,7 +254,7 @@ const state={trk:null,owner:null};
 // KPIs
 const cnt=k=>items.filter(i=>i.trk===k).length;
 document.getElementById('kpis').innerHTML=`
- <div class="kpi"><div class="n">59</div><div class="l">Processes</div></div>
+ <div class="kpi"><div class="n">60</div><div class="l">Processes</div></div>
  <div class="kpi"><div class="n"><span class="dot" style="background:var(--trk-tracked)"></span>${cnt('Tracked')}</div><div class="l">Tracked</div></div>
  <div class="kpi"><div class="n"><span class="dot" style="background:var(--trk-new)"></span>${cnt('New')}</div><div class="l">New</div></div>
  <div class="kpi"><div class="n"><span class="dot" style="background:var(--trk-gap)"></span>${cnt('Gap')}</div><div class="l">Gaps</div></div>`;
