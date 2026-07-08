@@ -66,7 +66,16 @@
   .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 14px;}
   .kpi .n{font-family:var(--mono);font-size:21px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
   .kpi .l{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);}
-  .load-sec{margin:22px 0 8px;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px;}
+
+  /* DRI rule banner */
+  .raci{display:flex;gap:14px;align-items:flex-start;margin:20px 0 4px;background:var(--accent-wash);
+    border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));border-radius:12px;padding:14px 16px;}
+  .raci .rb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);
+    border:1px solid var(--accent);border-radius:6px;padding:4px 8px;white-space:nowrap;flex:none;font-weight:600;background:var(--card);}
+  .raci p{margin:0;font-size:12.8px;color:var(--ink);line-height:1.5;}
+  .raci b{color:var(--ink);}
+
+  .load-sec{margin:20px 0 8px;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px;}
   .load-sec h2{font-size:12px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 13px;font-weight:600;}
   .loadrow{display:grid;grid-template-columns:120px 1fr 34px;align-items:center;gap:12px;margin-bottom:7px;cursor:pointer;}
   .loadrow:last-child{margin-bottom:0;}
@@ -90,8 +99,10 @@
     padding:16px 17px 15px;margin:0 0 16px;box-shadow:var(--shadow);break-inside:avoid;}
   .p-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
   .p-head h3{font-size:17px;margin:0;letter-spacing:-.01em;}
+  .dri-tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--pc);
+    border:1px solid var(--pc);border-radius:5px;padding:2px 5px;margin-left:7px;vertical-align:middle;}
   .p-count{font-family:var(--mono);font-size:11px;color:var(--ink-faint);white-space:nowrap;}
-  .seat{font-family:var(--mono);font-size:11px;color:var(--pc);margin-top:3px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+  .seat{font-family:var(--mono);font-size:11px;color:var(--pc);margin-top:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
   .mandate{font-size:13px;color:var(--ink);line-height:1.5;margin:11px 0 0;padding-left:11px;border-left:2px solid var(--pc);}
   .blk-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:14px 0 7px;}
   .resp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;}
@@ -104,10 +115,16 @@
   .fn .ds{width:3px;align-self:stretch;border-radius:3px;background:var(--dc);flex:none;}
   .fn .ft{flex:1;min-width:0;}
   .fn .fd{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-top:2px;}
+  .sup{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:5px;}
+  .suplbl{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .supchip{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:9.5px;color:var(--ink-soft);
+    background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 6px 1px 5px;}
+  .supchip .sd{width:6px;height:6px;border-radius:50%;flex:none;}
   .tk{width:8px;height:8px;border-radius:50%;flex:none;margin-top:4px;}
   .person.dim{opacity:.4;}
   .person.gaps{border-top-color:var(--trk-gap);background:linear-gradient(180deg,color-mix(in srgb,var(--trk-gap) 6%,var(--card)),var(--card));}
   .person.gaps .seat,.person.gaps .mandate{color:var(--trk-gap);border-color:var(--trk-gap);}
+  .person.gaps .dri-tag{display:none;}
   .note{margin-top:20px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--trk-gap);
     border-radius:9px;padding:12px 15px;font-size:12.5px;color:var(--ink-soft);}
   .note b{color:var(--ink);}
@@ -127,19 +144,25 @@
 
   <header class="masthead">
     <div>
-      <p class="eyebrow">Accountability Chart · Roles &amp; Ownership</p>
+      <p class="eyebrow">Accountability Chart · Single-DRI model</p>
       <div class="brand"><span class="glyph" aria-hidden="true"></span><h1>AgencyOS — Team Roles &amp; Ownership</h1></div>
-      <p class="sub">Each person's <b>role</b> — the outcome they own, their ongoing responsibilities, and the specific functions in their scope. Mapped from the AgencyOS meeting summaries (Jun 24 – Jul 7 2026).</p>
+      <p class="sub">Each person's <b>role</b> — the outcome they own, their responsibilities, and the functions in their scope. Every function has exactly one accountable owner (DRI). Mapped from the AgencyOS meeting summaries (Jun 24 – Jul 7 2026).</p>
     </div>
     <div class="kpis">
       <div class="kpi"><div class="n">9</div><div class="l">People</div></div>
       <div class="kpi"><div class="n">60</div><div class="l">Functions</div></div>
+      <div class="kpi"><div class="n">1</div><div class="l">DRI / function</div></div>
       <div class="kpi"><div class="n" style="color:var(--trk-gap)">3</div><div class="l">Unowned</div></div>
     </div>
   </header>
 
+  <div class="raci">
+    <span class="rb">Accountability model</span>
+    <p><b>One DRI per function.</b> Every function has exactly one <b>Directly Responsible Individual</b> — the accountable owner whose card it sits on. Others listed as <b>support</b> contribute or are consulted, but accountability never splits. If a function seems to need two owners, it's two functions.</p>
+  </div>
+
   <section class="load-sec">
-    <h2>Ownership load — functions owned per person</h2>
+    <h2>DRI load — functions each person is accountable for</h2>
     <div id="loadchart"></div>
   </section>
 
@@ -153,18 +176,19 @@
   <div class="legend" id="legend"></div>
 
   <div class="note">
-    <b>Read before relying on this.</b> Source is Fathom meeting <b>summaries</b>, not verbatim transcripts, so treat role wording as a first draft to correct. There are <b>two people named Daniel</b>: <b>Daniel (Ads)</b> owns Google Ads only; <b>Daniel (Ops)</b> — also called Sese / Cese — runs internal ops, PM &amp; client communication. <b>Kas owns 22 of 60 functions</b> — the concentration the internal-ops governance is meant to relieve. Three functions have <b>no owner</b> (red panel); legal/contracts sits with Jack but isn't firmly seated.
+    <b>Read before relying on this.</b> Source is Fathom meeting <b>summaries</b>, not verbatim transcripts — treat role wording and support assignments as a first draft to correct. There are <b>two people named Daniel</b>: <b>Daniel (Ads)</b> owns Google Ads only; <b>Daniel (Ops)</b> — also called Sese / Cese — runs internal ops, PM &amp; client communication. <b>Kas is DRI on 22 of 60 functions</b> — the concentration the internal-ops governance is meant to relieve. Three functions have <b>no DRI yet</b> (red panel); legal/contracts sits with Jack but isn't firmly seated.
   </div>
 </div>
 
 <script>
 const DOM={Platform:"--dom-platform",Sales:"--dom-sales",Delivery:"--dom-delivery",Operations:"--dom-operations",Finance:"--dom-finance","Client Success":"--dom-client"};
 const TRK={Tracked:"--trk-tracked",New:"--trk-new",Gap:"--trk-gap"};
+// function tuple: [title, domain, tracking, support[]?]
 const PEOPLE=[
  {name:"Kas",color:"#0f9d99",title:"Founder & CEO · Head of Commercial & Product",
   mandate:"Owns the agency's revenue and its product — sets commercial strategy, closes high-ticket clients, and is the architect of the AgencyOS platform and agency finance.",
   resp:["Commercial strategy and high-ticket sales — runs the free-build → close motion and the audit/proposal systems","Product ownership of the AgencyOS platform — sets the module roadmap (Knowledge, Data, Finance, Workflows, CRM)","Agency finance — pricing, invoicing, equity/JV structures, budget","Marketing strategy foundation (the Alpha Marketing Map) that feeds all delivery","Strategic leadership of top accounts — retention and expansion"],
-  fns:[["AgencyOS Platform (central rock)","Platform","Tracked"],["Finances module","Platform","Tracked"],["Workflows module (Paperclip)","Platform","Tracked"],["CRM / Sales module (Twenty)","Platform","Tracked"],["AgencyOS Lite (MVP)","Platform","New"],["AI Knowledge Vault + Agent-OS pack","Platform","New"],["Bug Backbone","Platform","New"],["Self-hosted AI model (GLM 5.2)","Platform","New"],["Signature motion: free 1-week AI build","Sales","New"],["Audit System","Sales","Tracked"],["Proposal & Order System (PRS)","Sales","Tracked"],["Alpha Marketing Map (OMM)","Sales","New"],["Strategy pivot: Ads → cold email/events","Sales","New"],["Deal pipeline (active prospects)","Sales","New"],["Agency merger integration","Operations","New"],["Internal financials","Finance","Tracked"],["Client invoicing","Finance","New"],["JV / equity & profit-share","Finance","New"],["AI-infra investment budget","Finance","New"],["Client Dashboard","Client Success","Tracked"],["Retention / expansion","Client Success","New"],["Client-context AI prompt","Client Success","New"]]},
+  fns:[["AgencyOS Platform (central rock)","Platform","Tracked",["Leo","Rehan"]],["Finances module","Platform","Tracked"],["Workflows module (Paperclip)","Platform","Tracked"],["CRM / Sales module (Twenty)","Platform","Tracked"],["AgencyOS Lite (MVP)","Platform","New",["Jack"]],["AI Knowledge Vault + Agent-OS pack","Platform","New"],["Bug Backbone","Platform","New"],["Self-hosted AI model (GLM 5.2)","Platform","New",["Rehan"]],["Signature motion: free 1-week AI build","Sales","New"],["Audit System","Sales","Tracked",["Jack"]],["Proposal & Order System (PRS)","Sales","Tracked"],["Alpha Marketing Map (OMM)","Sales","New"],["Strategy pivot: Ads → cold email/events","Sales","New"],["Deal pipeline (active prospects)","Sales","New"],["Agency merger integration","Operations","New",["Jack"]],["Internal financials","Finance","Tracked"],["Client invoicing","Finance","New"],["JV / equity & profit-share","Finance","New"],["AI-infra investment budget","Finance","New"],["Client Dashboard","Client Success","Tracked",["Rehan"]],["Retention / expansion","Client Success","New"],["Client-context AI prompt","Client Success","New"]]},
  {name:"Jack",color:"#6e6af0",title:"Co-Founder · Head of Growth & Accounts",
   mandate:"Owns agency growth and the SEO side of the house — lead generation, the verticalization model, and the agency's legal and commercial protection.",
   resp:["Demand generation — owns the Heavy Duty and AgencyOS lead funnels","Verticalization — the playbook to scale one client win across a whole market","SEO strategy oversight and the email/Klaviyo lifecycle","Legal, compliance and contracts — NDAs and third-party liability","Runs his own client book, onboarding via the Audit System and AgencyOS Lite"],
@@ -172,23 +196,23 @@ const PEOPLE=[
  {name:"Leo",color:"#2f86c4",title:"Head of RevOps & Delivery Operations",
   mandate:"Owns how work gets done — the operating system for delivery: knowledge management, data architecture, and the repeatable path from zero to live.",
   resp:["Knowledge management — the shared Obsidian vault (the build-first priority)","Data architecture and the agent stack / custom workflow builder","The repeatable zero-to-live website workflow and delivery standards","Client onboarding process and required-access spec","Internal-ops governance (with Daniel Ops) — keeping leadership accountable"],
-  fns:[["Knowledge Library / Obsidian Vault","Platform","Tracked"],["Data module (BigQuery + reports)","Platform","Tracked"],["Data Architecture & Agent stack","Platform","Tracked"],["Zero-to-live website workflow","Delivery","Tracked"],["Internal-ops whip governance","Operations","New"],["Client onboarding + access spec","Operations","Tracked"]]},
+  fns:[["Knowledge Library / Obsidian Vault","Platform","Tracked",["Kas","Jack"]],["Data module (BigQuery + reports)","Platform","Tracked",["Rehan"]],["Data Architecture & Agent stack","Platform","Tracked",["Rehan"]],["Zero-to-live website workflow","Delivery","Tracked",["Rehan","Mostafa"]],["Internal-ops whip governance","Operations","New",["Daniel (Ops)"]],["Client onboarding + access spec","Operations","Tracked"]]},
  {name:"Rehan",color:"#cf5f7c",title:"Head of Engineering, Infrastructure & Security",
   mandate:"Owns everything technical and secure — builds and hardens the infrastructure, ships client dashboards and data pipelines, and guarantees deliverable quality.",
   resp:["Infrastructure and security architecture — the private-repo GitHub model and access control","Code review and skeptic QA — the quality gate on all output","Client dashboards and BigQuery data pipelines","Centralized client-access management across brands","Reporting reconciliation and data reliability"],
-  fns:[["Code review workflow (AI code)","Delivery","Tracked"],["GitHub 3-repo security structure","Delivery","Tracked"],["Skeptic verification / deliverable QA","Delivery","Tracked"],["Client dashboards & data pipelines","Delivery","Tracked"],["Centralized client access","Operations","New"],["Reporting reconciliation / dashboards","Client Success","New"]]},
+  fns:[["Code review workflow (AI code)","Delivery","Tracked"],["GitHub 3-repo security structure","Delivery","Tracked"],["Skeptic verification / deliverable QA","Delivery","Tracked"],["Client dashboards & data pipelines","Delivery","Tracked",["Kas"]],["Centralized client access","Operations","New"],["Reporting reconciliation / dashboards","Client Success","New"]]},
  {name:"Mostafa",color:"#9660d0",title:"Design Lead · Head of Web & UX",
   mandate:"Owns how the work looks and converts — leads UX/CRO and the website build pipeline, and is productizing design into reusable AI skills.",
   resp:["UX and user-journey design, and conversion-rate optimization","The website build pipeline — Astro, and the Figma → Cloudway handoff","Visual and asset quality (image correction to service standard)","Modular AI design skills to scale production"],
-  fns:[["UX / CRO & product design","Delivery","Tracked"],["Astro website build (mockup → staging)","Delivery","Tracked"],["Image / asset correction","Delivery","New"]]},
+  fns:[["UX / CRO & product design","Delivery","Tracked"],["Astro website build (mockup → staging)","Delivery","Tracked",["Rehan","Leo"]],["Image / asset correction","Delivery","New"]]},
  {name:"Darko",color:"#4f9e4f",title:"SEO Specialist · Content Production Lead",
   mandate:"Owns organic content at scale — SEO research and the automated content-production pipeline, end to end.",
   resp:["Keyword and SERP research, and content briefs","Automated blog and service-page production (copy, JSON schema, metadata)","On-page and technical SEO, and site audits","The human approval loop on AI-drafted content"],
-  fns:[["SEO keyword / SERP research & briefs","Delivery","New"],["Blog & service-page automation (NeuronWriter)","Delivery","New"],["On-page / technical SEO & audits","Delivery","New"],["Content approval loop","Delivery","New"]]},
+  fns:[["SEO keyword / SERP research & briefs","Delivery","New"],["Blog & service-page automation (NeuronWriter)","Delivery","New"],["On-page / technical SEO & audits","Delivery","New"],["Content approval loop","Delivery","New",["Mostafa"]]]},
  {name:"Vovik",color:"#c98a1e",title:"Outbound / Cold Email Specialist",
   mandate:"Owns outbound demand — the single seat for cold email so outbound effort is never duplicated across teams.",
   resp:["Prospect list building and targeting","Cold-email copy and value-stacking funnels","Campaign delivery and deliverability"],
-  fns:[["Cold email outbound","Sales","Tracked"],["Cold email campaign build","Delivery","New"]]},
+  fns:[["Cold email outbound","Sales","Tracked",["Kas"]],["Cold email campaign build","Delivery","New",["Kas"]]]},
  {name:"Daniel (Ads)",color:"#cf7a3a",title:"Google Ads Specialist",
   mandate:"Owns paid search — runs Google Ads end to end for profitability. A separate person from Daniel in Ops; this is his only area.",
   resp:["High-intent paid lead generation","Full campaign management — PMax, Brand and search","Device/geo testing and conversion configuration","Ad-spend efficiency — CPL and profitability"],
@@ -198,11 +222,12 @@ const PEOPLE=[
   resp:["Project management — the Plane/GSD rollout, agents and deadline governance","Meeting operations — the IDS framework, cadence and template libraries","Client communication and updates — proactive status updates and progress reports on a set cadence","Client change-request intake, captured as PRDs (single source of truth)","Feedback loops — NPS","Internal-ops governance (with Leo)"],
   fns:[["Plane PM + GSD + agents","Operations","Tracked"],["IDS framework","Operations","New"],["Meeting cadence redesign","Operations","New"],["Meeting & Email templates","Operations","Tracked"],["Client communication & updates","Client Success","New"],["Client comms & change-request intake","Client Success","New"],["NPS surveys","Client Success","Tracked"]]},
 ];
-const GAPS={name:"Unowned — needs an owner",title:"No accountable person yet",
-  mandate:"Live functions with no single owner. Assigning these is the fastest risk reduction on the map.",
+const GAPS={name:"Unowned — needs a DRI",title:"No accountable person yet",
+  mandate:"Live functions with no single DRI. Assigning one accountable owner to each is the fastest risk reduction on the map.",
   resp:[],
   fns:[["Go-live / redirect process","Delivery","Gap"],["Billing ops / payouts / revenue-share","Finance","Gap"],["Approval-capture SOP / change log","Client Success","Gap"]]};
 
+const CLR={}; PEOPLE.forEach(p=>CLR[p.name]=p.color);
 let domFilter=null;
 const maxN=Math.max(...PEOPLE.map(p=>p.fns.length));
 document.getElementById('loadchart').innerHTML=PEOPLE.slice().sort((a,b)=>b.fns.length-a.fns.length).map(p=>`
@@ -219,24 +244,26 @@ Object.keys(DOM).forEach(d=>{
   b.onclick=()=>{domFilter=domFilter===d?null:d;render();};b.dataset.dom=d;domBox.appendChild(b);
 });
 document.getElementById('legend').innerHTML=
-  `<span style="font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase">Tracking</span>`+
-  Object.entries(TRK).map(([k,v])=>`<span><span class="d" style="background:var(${v})"></span>${k}${k==='Tracked'?' — Q3 rock / named system':k==='New'?' — surfaced in transcripts':' — no owner'}</span>`).join('');
+  `<span style="font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase">Key</span>`+
+  `<span><b style="color:var(--ink)">DRI</b> = accountable owner (the card)</span>`+
+  `<span class="supchip"><span class="sd" style="background:var(--ink-faint)"></span>name</span> = support / consulted`+
+  Object.entries(TRK).map(([k,v])=>`<span><span class="d" style="background:var(${v})"></span>${k}</span>`).join('');
 
 const people=document.getElementById('people');
 function personCard(p,isGap){
   const resp=p.resp.length?`<div class="blk-label">Responsibilities</div><ul class="resp">${p.resp.map(r=>`<li>${r}</li>`).join('')}</ul>`:'';
-  const fns=p.fns.map(([t,d,k])=>`
+  const fns=p.fns.map(([t,d,k,sup])=>`
     <div class="fn" data-dom="${d}" style="--dc:var(${DOM[d]})">
       <span class="ds"></span>
-      <span class="ft">${t}<span class="fd">${d}</span></span>
+      <span class="ft">${t}<span class="fd">${d}</span>${(sup&&sup.length)?`<span class="sup"><span class="suplbl">support</span>${sup.map(s=>`<span class="supchip"><span class="sd" style="background:${CLR[s]||'#8b93a2'}"></span>${s}</span>`).join('')}</span>`:''}</span>
       <span class="tk" style="background:var(${TRK[k]})" title="${k}"></span>
     </div>`).join('');
   return `<article class="person${isGap?' gaps':''}" data-name="${p.name}" style="--pc:${isGap?'var(--trk-gap)':p.color}">
-    <div class="p-head"><h3>${p.name}</h3><span class="p-count">${p.fns.length} function${p.fns.length>1?'s':''}</span></div>
+    <div class="p-head"><h3>${p.name}${isGap?'':'<span class="dri-tag">DRI</span>'}</h3><span class="p-count">${p.fns.length} function${p.fns.length>1?'s':''}</span></div>
     <div class="seat">${p.title}</div>
     <p class="mandate">${p.mandate}</p>
     ${resp}
-    <div class="blk-label">Functions owned</div>
+    <div class="blk-label">${isGap?'Functions':'Accountable for (DRI)'}</div>
     <div class="fns">${fns}</div>
   </article>`;
 }
