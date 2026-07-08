@@ -160,7 +160,7 @@
   <div class="legend" id="legend"></div>
 
   <div class="note">
-    <b>Read before relying on this.</b> Source is Fathom meeting <b>summaries</b>, not verbatim transcripts. The <b>Daniel vs. “Cese”/Seselovsky</b> split is unconfirmed in the source — verify who owns Google-Ads/PM vs. internal-ops before finalizing. <b>Kas owns 22 of 59 functions</b> — the concentration the internal-ops governance is meant to relieve. Three functions have <b>no owner</b> (shown in the red panel) and legal/contracts sits with Jack but isn't firmly seated.
+    <b>Read before relying on this.</b> Source is Fathom meeting <b>summaries</b>, not verbatim transcripts. There are <b>two people named Daniel</b>: <b>Daniel (Ads)</b> owns Google Ads only; <b>Daniel (Ops)</b> — also called Sese / Cese — runs internal ops &amp; PM. <b>Kas owns 22 of 59 functions</b> — the concentration the internal-ops governance is meant to relieve. Three functions have <b>no owner</b> (shown in the red panel) and legal/contracts sits with Jack but isn't firmly seated.
   </div>
 </div>
 
@@ -189,12 +189,12 @@ const PEOPLE=[
  {name:"Vovik",color:"#c98a1e",seat:"Cold Email Specialist",
   desc:"Cold-email specialist. Owns outbound cold-email delivery — list building, copy and value-stacking funnels. Cold email is consolidated under this seat so other teams don't duplicate the effort.",
   fns:[["Cold email outbound","Sales","Tracked"],["Cold email campaign build","Delivery","New"]]},
- {name:"Daniel",color:"#d0533f",seat:"Google Ads + PM / Meeting Ops",
-  desc:"Google Ads specialist who has also taken on the project-management and meeting-operations seat. Owns paid-search delivery plus the Plane/GSD rollout, the IDS framework, meeting cadence, and the template libraries. Source naming vs. Seselovsky is unconfirmed — verify.",
-  fns:[["Google Ads high-intent lead gen","Sales","New"],["Google Ads campaign management","Delivery","Tracked"],["Plane PM + GSD + agents","Operations","Tracked"],["IDS framework","Operations","New"],["Meeting cadence redesign","Operations","New"],["Meeting & Email templates","Operations","Tracked"],["NPS surveys","Client Success","Tracked"]]},
- {name:"Seselovsky",color:"#5b7fa6",seat:"Internal Ops Lead · EA & Coordination",
-  desc:"Internal-ops lead (EA and coordination). Owns client communications and change-request intake — every message and request captured as a PRD in Plane as the single source of truth — and supports Plane project organization. Source naming vs. Daniel is unconfirmed — verify.",
-  fns:[["Client comms & change-request intake","Client Success","New"]]},
+ {name:"Daniel (Ads)",color:"#cf7a3a",seat:"Google Ads Specialist",
+  desc:"Paid-search specialist — a separate person from Daniel in Ops. Owns Google Ads end to end: high-intent lead generation and full campaign management (PMax, Brand and search, device testing, conversion config for profitability). This is his only area.",
+  fns:[["Google Ads high-intent lead gen","Sales","New"],["Google Ads campaign management","Delivery","Tracked"]]},
+ {name:"Daniel (Ops)",color:"#5b7fa6",seat:"Internal Ops & PM · RevOps",
+  desc:"Runs internal operations and project management (also appears in the notes as Sese / Cese / “Sassy Cese” — all the same person). Owns the Plane/GSD rollout and its agents, the IDS meeting framework, meeting cadence, the meeting & email template libraries, client-comms and change-request intake as PRDs in Plane, and NPS.",
+  fns:[["Plane PM + GSD + agents","Operations","Tracked"],["IDS framework","Operations","New"],["Meeting cadence redesign","Operations","New"],["Meeting & Email templates","Operations","Tracked"],["Client comms & change-request intake","Client Success","New"],["NPS surveys","Client Success","Tracked"]]},
 ];
 const GAPS={name:"Unowned — needs an owner",seat:"No accountable person yet",
   fns:[["Go-live / redirect process","Delivery","Gap"],["Billing ops / payouts / revenue-share","Finance","Gap"],["Approval-capture SOP / change log","Client Success","Gap"]]};
