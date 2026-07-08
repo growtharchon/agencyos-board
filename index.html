@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AgencyOS — Functions & Workflows Board</title>
+<title>AgencyOS — Team Roles & Ownership</title>
 <style>
   :root{
     --bg:#eef0f3; --panel:#f7f8fa; --card:#ffffff; --card-2:#fbfcfd;
@@ -12,22 +12,19 @@
     --dom-platform:#6e6af0; --dom-sales:#c98a1e; --dom-delivery:#2f86c4;
     --dom-operations:#9660d0; --dom-finance:#cf5f7c; --dom-client:#4f9e4f;
     --trk-tracked:#2f9d63; --trk-new:#c98a1e; --trk-gap:#d0533f;
-    --shadow:0 1px 2px rgba(20,28,45,.06), 0 3px 10px rgba(20,28,45,.05);
-    --radius:11px;
+    --shadow:0 1px 2px rgba(20,28,45,.06), 0 3px 12px rgba(20,28,45,.05);
     --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#0e1117; --panel:#141922; --card:#181e29; --card-2:#1c2330;
-      --ink:#e7ecf3; --ink-soft:#a9b3c4; --ink-faint:#727e92; --line:#2a3241; --line-soft:#222a37;
-      --accent:#28c3bd; --accent-ink:#7ee0dc; --accent-wash:#12312f;
-      --dom-platform:#8f8bf6; --dom-sales:#e0a53f; --dom-delivery:#4fa0d8;
-      --dom-operations:#b083e4; --dom-finance:#e37f99; --dom-client:#69b869;
-      --trk-tracked:#48c07e; --trk-new:#e0a53f; --trk-gap:#ec6a54;
-      --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.34);
-    }
-  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0e1117; --panel:#141922; --card:#181e29; --card-2:#1c2330;
+    --ink:#e7ecf3; --ink-soft:#a9b3c4; --ink-faint:#727e92; --line:#2a3241; --line-soft:#222a37;
+    --accent:#28c3bd; --accent-ink:#7ee0dc; --accent-wash:#12312f;
+    --dom-platform:#8f8bf6; --dom-sales:#e0a53f; --dom-delivery:#4fa0d8;
+    --dom-operations:#b083e4; --dom-finance:#e37f99; --dom-client:#69b869;
+    --trk-tracked:#48c07e; --trk-new:#e0a53f; --trk-gap:#ec6a54;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.34);
+  }}
   :root[data-theme="light"]{
     --bg:#eef0f3; --panel:#f7f8fa; --card:#ffffff; --card-2:#fbfcfd;
     --ink:#1a1f2b; --ink-soft:#4a5468; --ink-faint:#7e8798; --line:#dde1e8; --line-soft:#e8ebf0;
@@ -35,7 +32,7 @@
     --dom-platform:#6e6af0; --dom-sales:#c98a1e; --dom-delivery:#2f86c4;
     --dom-operations:#9660d0; --dom-finance:#cf5f7c; --dom-client:#4f9e4f;
     --trk-tracked:#2f9d63; --trk-new:#c98a1e; --trk-gap:#d0533f;
-    --shadow:0 1px 2px rgba(20,28,45,.06), 0 3px 10px rgba(20,28,45,.05);
+    --shadow:0 1px 2px rgba(20,28,45,.06), 0 3px 12px rgba(20,28,45,.05);
   }
   :root[data-theme="dark"]{
     --bg:#0e1117; --panel:#141922; --card:#181e29; --card-2:#1c2330;
@@ -44,273 +41,221 @@
     --dom-platform:#8f8bf6; --dom-sales:#e0a53f; --dom-delivery:#4fa0d8;
     --dom-operations:#b083e4; --dom-finance:#e37f99; --dom-client:#69b869;
     --trk-tracked:#48c07e; --trk-new:#e0a53f; --trk-gap:#ec6a54;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.34);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.34);
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
-    -webkit-font-smoothing:antialiased;line-height:1.5;}
-  .wrap{max-width:1500px;margin:0 auto;padding:26px clamp(14px,3vw,34px) 60px;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5;}
+  .wrap{max-width:1320px;margin:0 auto;padding:24px clamp(14px,3vw,32px) 64px;}
+  a{color:var(--accent-ink);}
 
-  /* Header */
-  .masthead{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;justify-content:space-between;
-    padding-bottom:20px;border-bottom:1px solid var(--line);}
+  /* Nav */
+  .nav{display:flex;gap:7px;margin-bottom:20px;}
+  .nav a{font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink-soft);
+    border:1px solid var(--line);background:var(--panel);padding:6px 13px;border-radius:999px;transition:.15s;}
+  .nav a:hover{border-color:var(--accent);color:var(--ink);}
+  .nav a[aria-current="page"]{background:var(--accent-wash);border-color:var(--accent);color:var(--accent-ink);font-weight:600;}
+
+  .masthead{display:flex;flex-wrap:wrap;gap:16px 26px;align-items:flex-end;justify-content:space-between;
+    padding-bottom:18px;border-bottom:1px solid var(--line);}
   .brand{display:flex;align-items:center;gap:12px;}
-  .glyph{width:34px;height:34px;border-radius:9px;flex:none;position:relative;
+  .glyph{width:32px;height:32px;border-radius:9px;flex:none;position:relative;
     background:conic-gradient(from 210deg,var(--accent),var(--dom-platform),var(--dom-finance),var(--accent));
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);}
-  .glyph::after{content:"";position:absolute;inset:9px;border-radius:3px;background:var(--panel);}
-  h1{font-size:clamp(20px,2.4vw,27px);line-height:1.1;margin:0;letter-spacing:-.02em;text-wrap:balance;}
-  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--accent-ink);margin:0 0 5px;}
-  .sub{color:var(--ink-soft);font-size:13.5px;margin:7px 0 0;max-width:62ch;}
-  .sub a{color:var(--accent-ink);text-underline-offset:2px;}
-
-  /* KPIs */
+  .glyph::after{content:"";position:absolute;inset:9px;border-radius:3px;background:var(--bg);}
+  h1{font-size:clamp(20px,2.4vw,26px);line-height:1.1;margin:0;letter-spacing:-.02em;text-wrap:balance;}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 5px;}
+  .sub{color:var(--ink-soft);font-size:13.5px;margin:7px 0 0;max-width:66ch;}
   .kpis{display:flex;gap:9px;flex-wrap:wrap;}
-  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 14px;min-width:74px;}
-  .kpi .n{font-family:var(--mono);font-size:22px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;
-    display:flex;align-items:baseline;gap:6px;}
-  .kpi .l{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:1px;}
-  .kpi .dot{width:8px;height:8px;border-radius:50%;flex:none;transform:translateY(-2px);}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 14px;}
+  .kpi .n{font-family:var(--mono);font-size:21px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .kpi .l{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);}
 
-  /* Controls */
-  .controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin:20px 0 22px;}
-  .cluster{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .clabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);}
-  .chip{font:inherit;font-size:12.5px;cursor:pointer;border:1px solid var(--line);background:var(--panel);
-    color:var(--ink-soft);padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;
-    transition:background .15s,border-color .15s,color .15s;}
+  /* Ownership load */
+  .load-sec{margin:22px 0 8px;background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px;}
+  .load-sec h2{font-size:12px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 13px;font-weight:600;}
+  .loadrow{display:grid;grid-template-columns:120px 1fr 34px;align-items:center;gap:12px;margin-bottom:7px;cursor:pointer;}
+  .loadrow:last-child{margin-bottom:0;}
+  .loadrow .who{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;min-width:0;}
+  .loadrow .who .od{width:9px;height:9px;border-radius:50%;flex:none;}
+  .bar{height:15px;background:var(--line-soft);border-radius:5px;overflow:hidden;}
+  .bar i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+  .loadrow .cnt{font-family:var(--mono);font-size:12.5px;text-align:right;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+  .loadrow:hover .who{color:var(--accent-ink);}
+
+  /* Filters */
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 18px;}
+  .clabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-right:4px;}
+  .chip{font:inherit;font-size:12.5px;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);
+    padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;transition:.15s;}
   .chip:hover{border-color:var(--accent);color:var(--ink);}
   .chip .cd{width:8px;height:8px;border-radius:50%;flex:none;}
   .chip[aria-pressed="true"]{background:var(--accent-wash);border-color:var(--accent);color:var(--ink);font-weight:600;}
-  .chip .ct{font-family:var(--mono);font-size:11px;color:var(--ink-faint);}
-  .chip[aria-pressed="true"] .ct{color:var(--accent-ink);}
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px;}
 
-  /* Board */
-  .board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(266px,1fr);gap:15px;
-    overflow-x:auto;padding-bottom:16px;scroll-snap-type:x proximity;}
-  .col{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
-    display:flex;flex-direction:column;min-width:0;scroll-snap-align:start;}
-  .col-head{position:sticky;top:0;z-index:2;padding:13px 14px 11px;
-    background:linear-gradient(var(--panel),var(--panel) 78%,transparent);
-    border-bottom:1px solid var(--line-soft);border-radius:var(--radius) var(--radius) 0 0;}
-  .col-head::before{content:"";display:block;height:3px;width:34px;border-radius:3px;background:var(--dc);margin-bottom:9px;}
-  .col-title{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-  .col-title h2{font-size:14px;margin:0;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;}
-  .col-title h2 .cdot{width:9px;height:9px;border-radius:50%;background:var(--dc);flex:none;}
-  .col-count{font-family:var(--mono);font-size:11px;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
-  .load{display:flex;height:4px;border-radius:3px;overflow:hidden;margin-top:9px;background:var(--line-soft);}
-  .load i{display:block;height:100%;}
-  .cards{padding:11px;display:flex;flex-direction:column;gap:10px;min-height:34px;}
-  .card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--dc);
-    border-radius:9px;padding:11px 12px 12px;box-shadow:var(--shadow);
-    transition:transform .12s ease,box-shadow .12s ease,opacity .18s ease;}
-  .card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(20,28,45,.13);}
-  .card h3{font-size:13.5px;margin:0;line-height:1.32;letter-spacing:-.01em;text-wrap:pretty;}
-  .card p{font-size:12px;color:var(--ink-soft);margin:6px 0 0;line-height:1.42;
-    display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
-  .card:hover p{-webkit-line-clamp:unset;}
-  .meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;}
-  .owner{font-family:var(--mono);font-size:11px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px;
-    background:var(--card-2);border:1px solid var(--line-soft);padding:2px 8px 2px 6px;border-radius:999px;}
-  .owner .od{width:7px;height:7px;border-radius:50%;flex:none;}
-  .trk{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
-    display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:5px;white-space:nowrap;}
-  .trk .g{width:0;height:0;}
-  .trk-tracked{color:var(--trk-tracked);background:color-mix(in srgb,var(--trk-tracked) 15%,transparent);}
-  .trk-new{color:var(--trk-new);background:color-mix(in srgb,var(--trk-new) 15%,transparent);}
-  .trk-gap{color:var(--trk-gap);background:color-mix(in srgb,var(--trk-gap) 17%,transparent);}
-  .empty{font-size:12px;color:var(--ink-faint);font-style:italic;padding:8px 2px;}
-  .card.hide{display:none;}
+  /* People masonry */
+  .people{columns:3 320px;column-gap:16px;margin-top:4px;}
+  .person{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--pc);border-radius:12px;
+    padding:16px 17px 15px;margin:0 0 16px;box-shadow:var(--shadow);break-inside:avoid;}
+  .p-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+  .p-head h3{font-size:16.5px;margin:0;letter-spacing:-.01em;}
+  .p-count{font-family:var(--mono);font-size:11px;color:var(--ink-faint);white-space:nowrap;}
+  .seat{font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--pc);margin-top:3px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.06em;}
+  .desc{font-size:12.7px;color:var(--ink-soft);line-height:1.5;margin:10px 0 13px;}
+  .fn-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:7px;}
+  .fns{display:flex;flex-direction:column;gap:6px;}
+  .fn{display:flex;align-items:flex-start;gap:9px;padding:6px 8px;border-radius:7px;background:var(--card-2);
+    border:1px solid var(--line-soft);font-size:12.3px;line-height:1.35;}
+  .fn.hide{display:none;}
+  .fn .ds{width:3px;align-self:stretch;border-radius:3px;background:var(--dc);flex:none;}
+  .fn .ft{flex:1;min-width:0;}
+  .fn .fd{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-top:2px;}
+  .tk{width:8px;height:8px;border-radius:50%;flex:none;margin-top:4px;}
+  .person.dim{opacity:.4;}
+  .person.gaps{border-top-color:var(--trk-gap);background:linear-gradient(180deg,color-mix(in srgb,var(--trk-gap) 6%,var(--card)),var(--card));}
+  .person.gaps .seat{color:var(--trk-gap);}
 
-  .foot{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
-    color:var(--ink-faint);font-size:12px;display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;}
-  .foot strong{color:var(--ink-soft);font-weight:600;}
-  .note{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--trk-gap);
-    border-radius:9px;padding:12px 15px;font-size:12.5px;color:var(--ink-soft);max-width:96ch;}
+  .note{margin-top:20px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--trk-gap);
+    border-radius:9px;padding:12px 15px;font-size:12.5px;color:var(--ink-soft);}
   .note b{color:var(--ink);}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:16px;font-size:11.5px;color:var(--ink-faint);align-items:center;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend .d{width:9px;height:9px;border-radius:50%;}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
-  @media (max-width:720px){.board{grid-auto-columns:82%;}}
 </style>
 </head>
 <body>
 
 <div class="wrap">
+  <nav class="nav">
+    <a href="https://growtharchon.github.io/agencyos-board/" aria-current="page">By person</a>
+    <a href="https://growtharchon.github.io/agencyos-board/board.html">By domain</a>
+  </nav>
+
   <header class="masthead">
     <div>
-      <p class="eyebrow">Agency Operating System · Function Map</p>
-      <div class="brand">
-        <span class="glyph" aria-hidden="true"></span>
-        <h1>AgencyOS — Functions &amp; Workflows</h1>
-      </div>
-      <p class="sub">Every function and process across the agency, organized by domain with a single accountable owner. Hover a card for detail; filter by owner or tracking state.</p>
+      <p class="eyebrow">Accountability Chart · One owner per function</p>
+      <div class="brand"><span class="glyph" aria-hidden="true"></span><h1>AgencyOS — Team Roles &amp; Ownership</h1></div>
+      <p class="sub">What each person owns across the agency, with a role description and every function they're accountable for. Mapped from the AgencyOS meeting summaries (Jun 24 – Jul 7 2026).</p>
     </div>
-    <div class="kpis" id="kpis"></div>
+    <div class="kpis">
+      <div class="kpi"><div class="n">9</div><div class="l">People</div></div>
+      <div class="kpi"><div class="n">59</div><div class="l">Functions</div></div>
+      <div class="kpi"><div class="n" style="color:var(--trk-gap)">3</div><div class="l">Unowned</div></div>
+    </div>
   </header>
 
+  <section class="load-sec">
+    <h2>Ownership load — functions owned per person</h2>
+    <div id="loadchart"></div>
+  </section>
+
   <div class="controls">
-    <div class="cluster" id="trkFilter">
-      <span class="clabel">Tracking</span>
-    </div>
-    <div class="cluster" id="ownFilter">
-      <span class="clabel">Owner</span>
-    </div>
+    <span class="clabel">Filter by domain</span>
+    <div id="domFilter" style="display:contents"></div>
   </div>
 
-  <section class="board" id="board" aria-label="Function board by domain"></section>
+  <section class="people" id="people" aria-label="Team roles and ownership"></section>
+
+  <div class="legend" id="legend"></div>
 
   <div class="note">
-    <b>Read before relying on this.</b> Source is Fathom meeting <b>summaries</b>, not verbatim transcripts. The <b>Daniel vs. “Cese”/Seselovsky</b> naming is inconsistent in the source — current split: Daniel = Google Ads + Plane/PM &amp; meeting-ops; Seselovsky = internal ops &amp; client-comms intake. Four items are open <b>gaps</b> (coral): go-live/redirect, billing &amp; revenue-share, legal/contracts ownership, approval-capture SOP.
+    <b>Read before relying on this.</b> Source is Fathom meeting <b>summaries</b>, not verbatim transcripts. The <b>Daniel vs. “Cese”/Seselovsky</b> split is unconfirmed in the source — verify who owns Google-Ads/PM vs. internal-ops before finalizing. <b>Kas owns 22 of 59 functions</b> — the concentration the internal-ops governance is meant to relieve. Three functions have <b>no owner</b> (shown in the red panel) and legal/contracts sits with Jack but isn't firmly seated.
   </div>
-
-  <footer class="foot">
-    <strong>59 processes</strong><span>·</span><strong>6 layers</strong><span>·</span>
-    <span>Tracking: <b>Tracked</b> = Q3 rock / named system · <b>New</b> = surfaced in transcripts · <b>Gap</b> = no owner</span>
-  </footer>
 </div>
 
 <script>
-const DOMAINS=[
-  ["Platform","platform","--dom-platform"],
-  ["Sales","sales","--dom-sales"],
-  ["Delivery","delivery","--dom-delivery"],
-  ["Operations","operations","--dom-operations"],
-  ["Finance","finance","--dom-finance"],
-  ["Client Success","client","--dom-client"],
-];
-const OWNER_COLORS={Kas:"#0f9d99",Jack:"#6e6af0",Leo:"#2f86c4",Rehan:"#cf5f7c",Mostafa:"#9660d0",
-  Darko:"#4f9e4f",Vovik:"#c98a1e",Daniel:"#d0533f",Seselovsky:"#5b7fa6",Unassigned:"#9aa3b2"};
-const D=[
- ["Platform","Kas","Tracked","AgencyOS Platform (central rock)","Self-hosted AI OS and central hub for all agency ops — the spine above the five business functions."],
- ["Platform","Leo","Tracked","Knowledge Library / Obsidian Vault","Shared vault for notes, SOPs and templates. Built first — it unblocks onboarding and everything else. Kas & Jack feed their vault systems."],
- ["Platform","Leo","Tracked","Data module (BigQuery + reports)","Per-client BigQuery pipelines plus qualitative reporting; pipelines built by Rehan."],
- ["Platform","Kas","Tracked","Finances module","Internal agency financials, fed by client cost data via Paperclip and Claude."],
- ["Platform","Kas","Tracked","Workflows module (Paperclip)","Agent library, approval screens and team structures inside AgencyOS."],
- ["Platform","Kas","Tracked","CRM / Sales module (Twenty)","Open-source, MIT-licensed CRM (Twenty) embedded in AgencyOS."],
- ["Platform","Kas","New","AgencyOS Lite (MVP)","Stripped version so Jack can onboard his own clients independently without bottlenecking Kas."],
- ["Platform","Leo","Tracked","Data Architecture & Agent stack","Data-flow map, agent stack (Task Finder, Deadline Agent) and a custom Workflow Builder on Cloudflare Workers to avoid vendor lock-in."],
- ["Platform","Kas","New","AI Knowledge Vault + Agent-OS pack","Scraped 6,000 posts and 50,000 comments for real bug reports; ships 120 React components to speed dashboard builds."],
- ["Platform","Kas","New","Bug Backbone","Shared bug-to-solution library so recurring issues are never re-solved from scratch."],
- ["Platform","Kas","New","Self-hosted AI model (GLM 5.2)","Proprietary model infrastructure; a significant setup investment. Rehan supports infra."],
- ["Sales","Kas","New","Signature motion: free 1-week AI build","A free one-week AI build captures data and trust, driving a near-100% close on the next pitch."],
- ["Sales","Kas","Tracked","Audit System","Comprehensive sales process built on a strategy report. MVP ready for Jack; full templates in progress."],
- ["Sales","Kas","Tracked","Proposal & Order System (PRS)","Generates pre-sale decks and proposals with a conditional-logic order workflow."],
- ["Sales","Kas","New","Alpha Marketing Map (OMM)","Foundational client-strategy doc feeding all copy and UX — the offer, processes and solutions."],
- ["Sales","Vovik","Tracked","Cold email outbound","Highest-qualified-on-paper leads. Owned by Kas's team; Jack's team must not duplicate the effort."],
- ["Sales","Daniel","New","Google Ads high-intent lead gen","High-intent paid search lead generation."],
- ["Sales","Jack","Tracked","Lead flow — Heavy Duty + AgencyOS","Organic/SEO inbound funnel (Heavy Duty Leads) plus AgencyOS high-ticket lead gen."],
- ["Sales","Jack","Tracked","Verticalization playbook","Repeatable motion to take one metro client to many markets."],
- ["Sales","Kas","New","Strategy pivot: Ads → cold email/events","Shift toward cold email and in-person events, since meetings are required to close."],
- ["Sales","Kas","New","Deal pipeline (active prospects)","Tracking active near-term closes; free assets pre-built to secure high-value deals."],
- ["Delivery","Darko","New","SEO keyword / SERP research & briefs","Keyword and SERP research feeding content briefs."],
- ["Delivery","Darko","New","Blog & service-page automation (NeuronWriter)","Automated production: three files per page — HTML copy, JSON schema, and metadata."],
- ["Delivery","Darko","New","On-page / technical SEO & audits","Site audits and on-page technical SEO."],
- ["Delivery","Darko","New","Content approval loop","AI drafts reviewed and approved by a human pilot before publish."],
- ["Delivery","Mostafa","Tracked","UX / CRO & product design","User-journey design and conversion-rate optimization."],
- ["Delivery","Mostafa","Tracked","Astro website build (mockup → staging)","Astro builds mockup → staging → Cloudway, with a separate staging site for major redesigns."],
- ["Delivery","Mostafa","New","Image / asset correction","Correcting and updating client images and assets as a service."],
- ["Delivery","Leo","Tracked","Zero-to-live website workflow","Repeatable end-to-end delivery workflow, formalized from a client project post-mortem into a reusable skill group."],
- ["Delivery","Unassigned","Gap","Go-live / redirect process","301/302 mapping, URL preservation, tracking and reindex. Highest-stated delivery risk — no owner or SOP yet."],
- ["Delivery","Daniel","Tracked","Google Ads campaign management","PMax, Brand and search; geo-scoping, device testing and primary-conversion config for profitability."],
- ["Delivery","Jack","New","Klaviyo / email & retention flows","Jack owns Klaviyo; builds email and retention flows, testing logic in Fable."],
- ["Delivery","Vovik","New","Cold email campaign build","List building, copy and value-stacking funnels for cold email delivery."],
- ["Delivery","Rehan","Tracked","Code review workflow (AI code)","Skeptic verification and code review on important AI-generated code."],
- ["Delivery","Rehan","Tracked","GitHub 3-repo security structure","Private repos, no direct client access: Internal, Reports (Vercel, password-gated) and Website."],
- ["Delivery","Rehan","Tracked","Skeptic verification / deliverable QA","Nothing ships until the Skeptic agent confirms it."],
- ["Delivery","Rehan","Tracked","Client dashboards & data pipelines","Scraper-API to BigQuery pipelines and VSL/booking dashboards. Large current backlog."],
- ["Operations","Daniel","Tracked","Plane PM + GSD + agents","Central PM on the GSD framework; agents run projects, do skeptic verification and trigger deadline alerts. Seselovsky helps organize modules/cycles."],
- ["Operations","Daniel","New","IDS framework","Identify-Discuss-Solve structure; form pinned in Slack, issue list built from recent call recordings."],
- ["Operations","Daniel","New","Meeting cadence redesign","Wednesday kept for deep work; Mon/Wed/Fri rhythm; weekly L10 and a quarterly planning session."],
- ["Operations","Leo","New","Internal-ops whip governance","Daniel and Leo own internal ops and drive leadership to close tasks — created because leadership was the bottleneck."],
- ["Operations","Daniel","Tracked","Meeting & Email templates","Templates for L10s, standups, reviews and client calls; automated email library (data requests, NPS)."],
- ["Operations","Leo","Tracked","Client onboarding + access spec","Streamlined onboarding clarifying the client access each engagement needs."],
- ["Operations","Rehan","New","Centralized client access","A neutral backend domain acting as the single point for all client access across brands."],
- ["Operations","Jack","New","Org chart","Basic org chart for the merged agency."],
- ["Operations","Kas","New","Agency merger integration","Merge Outrider Digital (SEO) and Kas's performance team into one full-service agency."],
- ["Finance","Kas","Tracked","Internal financials","The AgencyOS Finances module — internal agency financials."],
- ["Finance","Kas","New","Client invoicing","Finalize completed deliverables (e.g. a launched site) for invoicing."],
- ["Finance","Kas","New","JV / equity & profit-share","Deal structures built around equity and profit-share upside, shared with the team."],
- ["Finance","Kas","New","AI-infra investment budget","Budget allocated for proprietary AI model hosting."],
- ["Finance","Jack","Gap","Legal / compliance / contracts / NDAs","Contracts, NDAs and third-party liability (e.g. Vercel outages). Owner not firmly seated."],
- ["Finance","Unassigned","Gap","Billing ops / payouts / revenue-share","Day-to-day billing, VA payouts and revenue-share accounting — not yet instrumented anywhere."],
- ["Client Success","Kas","Tracked","Client Dashboard","Filtered client view: onboarding, knowledge library, reporting & system health, and admin/contracts."],
- ["Client Success","Seselovsky","New","Client comms & change-request intake","All client messages and change requests captured as PRDs in Plane — one source of truth, ending memory disputes."],
- ["Client Success","Unassigned","Gap","Approval-capture SOP / change log","SOP to capture client approvals and change logs; introduced but no named owner."],
- ["Client Success","Daniel","Tracked","NPS surveys","Automated NPS survey emails within the email template library."],
- ["Client Success","Kas","New","Retention / expansion","Strategic account leadership and expansion; e.g. VIP retention outreach on a client's top repeat customers."],
- ["Client Success","Kas","New","Client-context AI prompt","Give clients a prompt to feed their own AI so their feedback stays useful and in-scope."],
- ["Client Success","Rehan","New","Reporting reconciliation / dashboards","Unified dashboards; resolve client-vs-agency conversion-count discrepancies with consistent definitions."],
-];
-const items=D.map(r=>({domain:r[0],owner:r[1],trk:r[2],title:r[3],desc:r[4]}));
+const DOM={Platform:"--dom-platform",Sales:"--dom-sales",Delivery:"--dom-delivery",Operations:"--dom-operations",Finance:"--dom-finance","Client Success":"--dom-client"};
 const TRK={Tracked:"--trk-tracked",New:"--trk-new",Gap:"--trk-gap"};
-const state={trk:null,owner:null};
+const PEOPLE=[
+ {name:"Kas",color:"#0f9d99",seat:"Founder · Sales, Finance & Product",
+  desc:"Founder and commercial engine of the agency. Owns client strategy and the sales motion, architects the AgencyOS platform end-to-end, and holds agency finance. By far the largest owner on the map — the reason the internal-ops governance exists is to stop him being the bottleneck.",
+  fns:[["AgencyOS Platform (central rock)","Platform","Tracked"],["Finances module","Platform","Tracked"],["Workflows module (Paperclip)","Platform","Tracked"],["CRM / Sales module (Twenty)","Platform","Tracked"],["AgencyOS Lite (MVP)","Platform","New"],["AI Knowledge Vault + Agent-OS pack","Platform","New"],["Bug Backbone","Platform","New"],["Self-hosted AI model (GLM 5.2)","Platform","New"],["Signature motion: free 1-week AI build","Sales","New"],["Audit System","Sales","Tracked"],["Proposal & Order System (PRS)","Sales","Tracked"],["Alpha Marketing Map (OMM)","Sales","New"],["Strategy pivot: Ads → cold email/events","Sales","New"],["Deal pipeline (active prospects)","Sales","New"],["Agency merger integration","Operations","New"],["Internal financials","Finance","Tracked"],["Client invoicing","Finance","New"],["JV / equity & profit-share","Finance","New"],["AI-infra investment budget","Finance","New"],["Client Dashboard","Client Success","Tracked"],["Retention / expansion","Client Success","New"],["Client-context AI prompt","Client Success","New"]]},
+ {name:"Jack",color:"#6e6af0",seat:"Co-Founder · Growth & SEO Strategy",
+  desc:"Co-founder from the Outrider Digital side. Owns agency management, the verticalization playbook, SEO lead-flow strategy, email/Klaviyo, and legal & contracts. Primary consumer of the Audit System and AgencyOS Lite to onboard his own book of clients.",
+  fns:[["Lead flow — Heavy Duty + AgencyOS","Sales","Tracked"],["Verticalization playbook","Sales","Tracked"],["Klaviyo / email & retention flows","Delivery","New"],["Org chart","Operations","New"],["Legal / compliance / contracts / NDAs","Finance","Gap"]]},
+ {name:"Leo",color:"#2f86c4",seat:"RevOps Lead",
+  desc:"Revenue-operations lead. Owns project management and the shared Knowledge Library (the build-first, top-priority system), the data architecture and agent stack, the repeatable zero-to-live website workflow, and client onboarding — and co-drives internal-ops governance.",
+  fns:[["Knowledge Library / Obsidian Vault","Platform","Tracked"],["Data module (BigQuery + reports)","Platform","Tracked"],["Data Architecture & Agent stack","Platform","Tracked"],["Zero-to-live website workflow","Delivery","Tracked"],["Internal-ops whip governance","Operations","New"],["Client onboarding + access spec","Operations","Tracked"]]},
+ {name:"Rehan",color:"#cf5f7c",seat:"Tech Lead · Engineering & Infra",
+  desc:"Tech lead. Owns engineering, infrastructure and security — the private-repo GitHub security model, code review and skeptic QA, and all client dashboards and BigQuery data pipelines. Carrying a large dashboard backlog (capacity risk).",
+  fns:[["Code review workflow (AI code)","Delivery","Tracked"],["GitHub 3-repo security structure","Delivery","Tracked"],["Skeptic verification / deliverable QA","Delivery","Tracked"],["Client dashboards & data pipelines","Delivery","Tracked"],["Centralized client access","Operations","New"],["Reporting reconciliation / dashboards","Client Success","New"]]},
+ {name:"Mostafa",color:"#9660d0",seat:"Design Lead",
+  desc:"Design lead. Owns UX/CRO and the website build pipeline (Astro, Figma to Cloudway) plus image/asset correction, and is building modular AI design skills to automate repetitive design work.",
+  fns:[["UX / CRO & product design","Delivery","Tracked"],["Astro website build (mockup → staging)","Delivery","Tracked"],["Image / asset correction","Delivery","New"]]},
+ {name:"Darko",color:"#4f9e4f",seat:"SEO Specialist",
+  desc:"SEO specialist. Owns SEO content production and automation — keyword and SERP research, NeuronWriter blog and service-page builds (copy, schema, metadata), technical and on-page SEO, and the human-approval loop on AI drafts.",
+  fns:[["SEO keyword / SERP research & briefs","Delivery","New"],["Blog & service-page automation (NeuronWriter)","Delivery","New"],["On-page / technical SEO & audits","Delivery","New"],["Content approval loop","Delivery","New"]]},
+ {name:"Vovik",color:"#c98a1e",seat:"Cold Email Specialist",
+  desc:"Cold-email specialist. Owns outbound cold-email delivery — list building, copy and value-stacking funnels. Cold email is consolidated under this seat so other teams don't duplicate the effort.",
+  fns:[["Cold email outbound","Sales","Tracked"],["Cold email campaign build","Delivery","New"]]},
+ {name:"Daniel",color:"#d0533f",seat:"Google Ads + PM / Meeting Ops",
+  desc:"Google Ads specialist who has also taken on the project-management and meeting-operations seat. Owns paid-search delivery plus the Plane/GSD rollout, the IDS framework, meeting cadence, and the template libraries. Source naming vs. Seselovsky is unconfirmed — verify.",
+  fns:[["Google Ads high-intent lead gen","Sales","New"],["Google Ads campaign management","Delivery","Tracked"],["Plane PM + GSD + agents","Operations","Tracked"],["IDS framework","Operations","New"],["Meeting cadence redesign","Operations","New"],["Meeting & Email templates","Operations","Tracked"],["NPS surveys","Client Success","Tracked"]]},
+ {name:"Seselovsky",color:"#5b7fa6",seat:"Internal Ops Lead · EA & Coordination",
+  desc:"Internal-ops lead (EA and coordination). Owns client communications and change-request intake — every message and request captured as a PRD in Plane as the single source of truth — and supports Plane project organization. Source naming vs. Daniel is unconfirmed — verify.",
+  fns:[["Client comms & change-request intake","Client Success","New"]]},
+];
+const GAPS={name:"Unowned — needs an owner",seat:"No accountable person yet",
+  fns:[["Go-live / redirect process","Delivery","Gap"],["Billing ops / payouts / revenue-share","Finance","Gap"],["Approval-capture SOP / change log","Client Success","Gap"]]};
 
-// KPIs
-const cnt=k=>items.filter(i=>i.trk===k).length;
-document.getElementById('kpis').innerHTML=`
- <div class="kpi"><div class="n">59</div><div class="l">Processes</div></div>
- <div class="kpi"><div class="n"><span class="dot" style="background:var(--trk-tracked)"></span>${cnt('Tracked')}</div><div class="l">Tracked</div></div>
- <div class="kpi"><div class="n"><span class="dot" style="background:var(--trk-new)"></span>${cnt('New')}</div><div class="l">New</div></div>
- <div class="kpi"><div class="n"><span class="dot" style="background:var(--trk-gap)"></span>${cnt('Gap')}</div><div class="l">Gaps</div></div>`;
+let domFilter=null;
 
-// Filters
-const trkBox=document.getElementById('trkFilter'), ownBox=document.getElementById('ownFilter');
-["Tracked","New","Gap"].forEach(t=>{
+// Ownership load chart
+const maxN=Math.max(...PEOPLE.map(p=>p.fns.length));
+document.getElementById('loadchart').innerHTML=PEOPLE.slice().sort((a,b)=>b.fns.length-a.fns.length).map(p=>`
+  <div class="loadrow" data-jump="${p.name}">
+    <span class="who"><span class="od" style="background:${p.color}"></span>${p.name}</span>
+    <span class="bar"><i style="width:${p.fns.length/maxN*100}%;background:${p.color}"></i></span>
+    <span class="cnt">${p.fns.length}</span>
+  </div>`).join('');
+
+// Domain filter
+const domBox=document.getElementById('domFilter');
+Object.keys(DOM).forEach(d=>{
   const b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed','false');
-  b.innerHTML=`<span class="cd" style="background:var(${TRK[t]})"></span>${t}<span class="ct">${cnt(t)}</span>`;
-  b.onclick=()=>{state.trk=state.trk===t?null:t;sync();};b.dataset.trk=t;trkBox.appendChild(b);
-});
-[...new Set(items.map(i=>i.owner))].forEach(o=>{
-  const b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed','false');
-  b.innerHTML=`<span class="cd" style="background:${OWNER_COLORS[o]||'#888'}"></span>${o}<span class="ct">${items.filter(i=>i.owner===o).length}</span>`;
-  b.onclick=()=>{state.owner=state.owner===o?null:o;sync();};b.dataset.own=o;ownBox.appendChild(b);
+  const c=getComputedStyle(document.documentElement).getPropertyValue(DOM[d]);
+  b.innerHTML=`<span class="cd" style="background:var(${DOM[d]})"></span>${d}`;
+  b.onclick=()=>{domFilter=domFilter===d?null:d;render();};b.dataset.dom=d;domBox.appendChild(b);
 });
 
-// Board
-const board=document.getElementById('board');
-DOMAINS.forEach(([name,key,cvar])=>{
-  const col=document.createElement('div');col.className='col';col.style.setProperty('--dc',`var(${cvar})`);
-  const list=items.filter(i=>i.domain===name);
-  const mix=["Tracked","New","Gap"].map(t=>`<i style="flex:${list.filter(i=>i.trk===t).length};background:var(${TRK[t]})"></i>`).join('');
-  col.innerHTML=`<div class="col-head"><div class="col-title">
-      <h2><span class="cdot"></span>${name}</h2><span class="col-count" data-count>${list.length}</span></div>
-      <div class="load">${mix}</div></div>`;
-  const cards=document.createElement('div');cards.className='cards';
-  list.forEach(i=>{
-    const c=document.createElement('article');c.className='card';
-    c.style.setProperty('--dc',`var(${cvar})`);
-    c.dataset.trk=i.trk;c.dataset.own=i.owner;
-    c.innerHTML=`<h3>${i.title}</h3><p>${i.desc}</p>
-      <div class="meta">
-        <span class="owner"><span class="od" style="background:${OWNER_COLORS[i.owner]||'#888'}"></span>${i.owner}</span>
-        <span class="trk trk-${i.trk.toLowerCase()}">${i.trk}</span>
-      </div>`;
-    cards.appendChild(c);
-  });
-  const empty=document.createElement('div');empty.className='empty';empty.hidden=true;empty.textContent='No matching processes';
-  cards.appendChild(empty);
-  col.appendChild(cards);board.appendChild(col);
-});
+// Legend
+document.getElementById('legend').innerHTML=
+  `<span style="font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase">Tracking</span>`+
+  Object.entries(TRK).map(([k,v])=>`<span><span class="d" style="background:var(${v})"></span>${k}${k==='Tracked'?' — Q3 rock / named system':k==='New'?' — surfaced in transcripts':' — no owner'}</span>`).join('');
 
-function sync(){
-  document.querySelectorAll('[data-trk]').forEach(el=>{
-    if(el.classList.contains('chip'))el.setAttribute('aria-pressed',String(state.trk===el.dataset.trk));
-  });
-  document.querySelectorAll('[data-own]').forEach(el=>{
-    if(el.classList.contains('chip'))el.setAttribute('aria-pressed',String(state.owner===el.dataset.own));
-  });
-  document.querySelectorAll('.col').forEach(col=>{
-    let shown=0;
-    col.querySelectorAll('.card').forEach(c=>{
-      const ok=(!state.trk||c.dataset.trk===state.trk)&&(!state.owner||c.dataset.own===state.owner);
-      c.classList.toggle('hide',!ok);if(ok)shown++;
+const people=document.getElementById('people');
+function personCard(p,isGap){
+  const fns=p.fns.map(([t,d,k])=>`
+    <div class="fn" data-dom="${d}" style="--dc:var(${DOM[d]})">
+      <span class="ds"></span>
+      <span class="ft">${t}<span class="fd">${d}</span></span>
+      <span class="tk" style="background:var(${TRK[k]})" title="${k}"></span>
+    </div>`).join('');
+  return `<article class="person${isGap?' gaps':''}" data-name="${p.name}" style="--pc:${isGap?'var(--trk-gap)':p.color}">
+    <div class="p-head"><h3>${p.name}</h3><span class="p-count">${p.fns.length} function${p.fns.length>1?'s':''}</span></div>
+    <div class="seat">${p.seat}</div>
+    <p class="desc">${p.desc}</p>
+    <div class="fn-label">Owns</div>
+    <div class="fns">${fns}</div>
+  </article>`;
+}
+function render(){
+  people.innerHTML=PEOPLE.map(p=>personCard(p,false)).join('')+personCard(GAPS,true);
+  document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',String(domFilter===c.dataset.dom)));
+  if(domFilter){
+    document.querySelectorAll('.person').forEach(card=>{
+      let shown=0;
+      card.querySelectorAll('.fn').forEach(f=>{const ok=f.dataset.dom===domFilter;f.classList.toggle('hide',!ok);if(ok)shown++;});
+      card.classList.toggle('dim',shown===0);
     });
-    col.querySelector('[data-count]').textContent=shown;
-    col.querySelector('.empty').hidden=shown!==0;
+  }
+  document.querySelectorAll('.loadrow').forEach(r=>r.onclick=()=>{
+    const el=document.querySelector('.person[data-name="'+r.dataset.jump+'"]');
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
   });
 }
-sync();
+render();
 </script>
 </body>
 </html>
